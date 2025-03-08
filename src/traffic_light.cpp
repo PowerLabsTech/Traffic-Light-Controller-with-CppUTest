@@ -4,6 +4,7 @@
 
 static traffic_light_state_t currentState = RED;
 static traffic_light_state_t nextState = currentState;
+static bool buttonPressed = false;
 
 void setTrafficLightState(traffic_light_state_t state)
 {
@@ -39,5 +40,23 @@ traffic_light_state_t runTrafficLight(void)
 
 bool trafficLightButtonPressed(void)
 {
-    return false;
+    buttonPressed = (gpio_get(BUTTON_PIN) == 1);
+    if (buttonPressed && currentState == GREEN)
+    {
+        return true;
+    } else
+    {
+        return false;
+    }
+}
+    
+void startYellowTransition(void)
+{
+    setTrafficLightState(YELLOW);
+}
+
+void completeYellowTransitionToRed(uint16_t yellowToRedDuration)
+{
+    sleep_ms(yellowToRedDuration);
+    setTrafficLightState(RED);
 }
