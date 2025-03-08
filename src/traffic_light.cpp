@@ -76,3 +76,15 @@ void completeYellowTransitionToRed(uint16_t yellowToRedDuration)
     sleep_ms(yellowToRedDuration);
     setTrafficLightState(RED);
 }
+
+uint16_t holdOnBeforeGreen(uint16_t redToGreenDuration)
+{
+    if (redToGreenDuration < MIN_LIMIT)
+    {
+        redToGreenDuration = MIN_LIMIT;
+    } else if (redToGreenDuration > MAX_LIMIT)
+    {
+        redToGreenDuration = MAX_LIMIT;
+    }
+    return redToGreenDuration;
+}
