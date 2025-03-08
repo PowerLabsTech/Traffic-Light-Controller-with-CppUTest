@@ -8,8 +8,24 @@ static bool buttonPressed = false;
 
 void setTrafficLightState(traffic_light_state_t state)
 {
-    nextState = state;
-    runTrafficLight();
+    traffic_light_state_t previousState;
+    switch(state)
+    {
+        case RED:
+            previousState = YELLOW;
+            break;
+        case YELLOW:
+            previousState = GREEN;
+            break;
+        case GREEN:
+            previousState = RED;
+            break;
+    }
+    if (currentState == previousState)
+    {
+        nextState = state;
+        runTrafficLight();
+    }
 }
 
 traffic_light_state_t runTrafficLight(void)
