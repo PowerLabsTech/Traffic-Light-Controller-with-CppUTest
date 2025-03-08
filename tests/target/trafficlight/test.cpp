@@ -3,7 +3,7 @@
 #include "CppUTest/TestHarness.h"
 #include "traffic_light.h"
 
-// 
+// Function overload to simulate the tests
 bool trafficLightButtonPressed(bool simulatePressed, traffic_light_state_t currentState)
 {
     if (simulatePressed && currentState == GREEN)

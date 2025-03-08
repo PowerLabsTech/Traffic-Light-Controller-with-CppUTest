@@ -10,5 +10,5 @@ int main(int ac, char ** av)
     printf("Running CppUTest...");
 
     const char * fav[5] = {"trafficlight_test", "-c", "-v", "-g", "TrafficLightGroup"};
-    CommandLineTestRunner::RunAllTests(5, fav);
+    return CommandLineTestRunner::RunAllTests(5, fav);
 }
