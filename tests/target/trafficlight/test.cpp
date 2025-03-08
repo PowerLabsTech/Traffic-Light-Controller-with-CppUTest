@@ -70,6 +70,7 @@ TEST(TrafficLightGroup, ButtonPressOnGreenToYellowThenRed)
 TEST(TrafficLightGroup, ButtonPressOnYellowOrRed)
 {
     // Start light at YELLOW
+    setTrafficLightState(GREEN); // Following our flow, we can't jump from RED to YELLOW, hence we need to go to GREEN before YELLOW. Remember setup() function sets the state to RED.
     setTrafficLightState(YELLOW);
     CHECK_EQUAL(YELLOW, runTrafficLight());
 
